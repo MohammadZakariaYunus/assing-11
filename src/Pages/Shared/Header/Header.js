@@ -12,7 +12,7 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" sticky='top' variant="dark">
             <Container>
                 <Navbar.Brand href="#home">Wholesale Dealers
                 </Navbar.Brand>
@@ -20,14 +20,23 @@ const Header = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="m-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="login">Login</Nav.Link>
                         <Nav.Link as={Link} to="inventory">Inventory</Nav.Link>
                         <Nav.Link as={Link} to="blogs">Blogs</Nav.Link>
                         {
+                            user && <>
+                                <Nav.Link as={Link} to="addItem">Add Item</Nav.Link>
+                                <Nav.Link as={Link} to="myItem">My Items</Nav.Link>
+                                <Nav.Link as={Link} to="manageItems">Manage Items</Nav.Link>
+                            </>
+                        }
+                        {
                             user ?
+
                                 <Nav.Link onClick={handleSignOut}>Sign Out</Nav.Link>
                                 :
-                                <Nav.Link as={Link} to="login">Login</Nav.Link>
+                                <Nav.Link as={Link} to="login">
+                                    Login
+                                </Nav.Link>
                         }
                     </Nav>
                 </Navbar.Collapse>
