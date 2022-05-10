@@ -6,12 +6,13 @@ import { getAuth } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyB2LsoMGSXGLvL53OtrnDc1kb84Uk7e7Ng",
-    authDomain: "wholesale-dealers.firebaseapp.com",
-    projectId: "wholesale-dealers",
-    storageBucket: "wholesale-dealers.appspot.com",
-    messagingSenderId: "1051158805096",
-    appId: "1:1051158805096:web:7961571f65fee95df019dd"
+    apiKey: "AIzaSyDUSf_1_MBGx4iwSg8kZ1vz25Fv2RY38GE",
+    authDomain: "wholesale-dealers-5f173.firebaseapp.com",
+    projectId: "wholesale-dealers-5f173",
+    storageBucket: "wholesale-dealers-5f173.appspot.com",
+    messagingSenderId: "802505674247",
+    appId: "1:802505674247:web:64fead63a628db4f53a4a2"
+
 };
 
 // Initialize Firebase
