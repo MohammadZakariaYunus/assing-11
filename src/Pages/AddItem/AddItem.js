@@ -25,6 +25,7 @@ const AddItem = () => {
                 <input placeholder='Supplier Name' className='form-control w-50 mb-2' {...register("name")} />
                 <input placeholder='Company Name' className='form-control w-50 mb-2' {...register("company")} />
                 <input placeholder='Price' className='form-control w-50 mb-2' type="number" {...register("price")} />
+                <input placeholder='Quantity' className='form-control w-50 mb-2' type="number" {...register("quantity")} />
                 <input placeholder='Image URL' className='form-control w-50 mb-2' type="text" {...register("img")} />
                 <textarea placeholder='Description' className='form-control w-50 mb-2' {...register("about")} />
                 <input className='w-25' type="submit" value="Add Product" />

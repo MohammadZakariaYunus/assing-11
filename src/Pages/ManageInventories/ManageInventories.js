@@ -1,34 +1,66 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
+import { Nav } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
 
 const ManageInventories = () => {
     const [inventory] = useInventory();
+
+    const navigate = useNavigate();
+    const navigateAddItem = event => {
+        navigate('/addItem');
+    }
+
+
     return (
-        <div>
-            <h2>Manage Your Inventories</h2>
-            {
-                inventory.map(item => <table className="table table-striped" key={item._id} >
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>{item.component}</td>
-                            <td>{item.name}</td>
-                            <td>{item.price}</td>
-                        </tr>
-                    </tbody>
+        <div className='container'>
+            <h2 className='mt-5'>Product List</h2>
+            <div className='d-flex justify-content-between'>
+                <p className='text-muted mt-2 mb-5' >The product list effectively dictates product presentation and provides space
+                    <br />
+                    to list your products and offering in the most appealing way.</p>
+                <button onClick={navigateAddItem} className='btn btn-light'>
+                    <Nav.Link as={Link} to="/addItem">Add Item</Nav.Link>
+                </button>
+            </div>
 
+            <table className="table table-hover"  >
+                <thead>
+                    <tr className=''>
+                        <th scope="col">Product</th>
+                        <th scope="col">Supplier</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Company</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
 
-                </table>
-                )
-            }
+                {
+                    inventory.map(item =>
+                        <tbody>
+                            <tr key={item._id}>
+                                <th>{item.component}</th>
+                                <td>{item.name}</td>
+                                <td>{item.price} $</td>
+                                <td>{item.company}</td>
+                                <td>{item.quantity}</td>
+                                <td>
+                                    <button className='btn btn-success m-1'>
+                                        <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                                    </button>
+                                    <button className='btn btn-danger'>
+                                        <FontAwesomeIcon icon={faTrashCan} />
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    )
+                }
+            </table>
         </div >
     );
 };
