@@ -10,8 +10,7 @@ const ItemDetail = () => {
         fetch(url)
             .then(res => res.json())
             .then(data => setItem(data))
-    }, [])
-    console.log('id', itemId)
+    });
 
     return (
         <div>

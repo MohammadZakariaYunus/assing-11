@@ -1,19 +1,42 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
 
 const ManageInventories = () => {
-    const [inventory] = useInventory();
+    const [inventory, setInventory] = useInventory();
+
+    const { itemId } = useParams();
+
+
+    const navigateToItemDetail = id => {
+        navigate(`/item/${id}`);
+    }
+
+
+
+    const handleDeleteId = id => {
+        const proceed = window.confirm('Are You Sure Delete Item?');
+        if (proceed) {
+            const url = `http://localhost:5000/product/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    const remaining = inventory.filter(item => item._id !== id);
+                    setInventory(remaining);
+                })
+        }
+    }
 
     const navigate = useNavigate();
     const navigateAddItem = event => {
         navigate('/addItem');
     }
-
 
     return (
         <div className='container'>
@@ -49,10 +72,10 @@ const ManageInventories = () => {
                                 <td>{item.company}</td>
                                 <td>{item.quantity}</td>
                                 <td>
-                                    <button className='btn btn-success m-1'>
+                                    <button onClick={() => navigateToItemDetail(item._id)} className='btn btn-success m-1'>
                                         <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
                                     </button>
-                                    <button className='btn btn-danger'>
+                                    <button onClick={() => handleDeleteId(item._id)} className='btn btn-danger'>
                                         <FontAwesomeIcon icon={faTrashCan} />
                                     </button>
                                 </td>

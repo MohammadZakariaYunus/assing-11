@@ -1,12 +1,22 @@
 import React from 'react';
+import useInventory from '../../../hooks/useProducts';
 import Banner from '../Banner/Banner';
-import Inventory from '../Inventory/Inventory';
+import Item from '../Item/Item';
 
 const Home = () => {
+    const [inventory] = useInventory();
+    const spliceInventory = inventory.splice(0, 6);
+
     return (
         <div>
             <Banner></Banner>
-            <Inventory></Inventory>
+            {
+                spliceInventory.map(item => <Item
+                    key={item._id}
+                    item={item}
+                >
+                </Item>)
+            }
         </div>
     );
 };
