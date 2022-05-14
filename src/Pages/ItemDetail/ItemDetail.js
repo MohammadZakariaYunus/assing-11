@@ -17,7 +17,7 @@ const ItemDetail = () => {
             <h2>You are Search</h2>
             <h4>{item.component}</h4>
             <div className='text-center'>
-                <Link to={`//${itemId}`}>
+                <Link to={`/${itemId}`}>
                     <button className='btn btn-primary'>Proceed Checkout</button>
                 </Link>
             </div>

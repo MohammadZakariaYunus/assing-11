@@ -1,16 +1,32 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import { Nav } from 'react-bootstrap';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Form, Nav } from 'react-bootstrap';
+import { Link, useNavigate } from 'react-router-dom';
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import { faTruckPlane } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
+import { useForm } from 'react-hook-form';
 
 const ManageInventories = () => {
     const [inventory, setInventory] = useInventory();
 
-    const { itemId } = useParams();
-
+    const { register, handleSubmit } = useForm();
+    const onSubmit = data => {
+        const url = `http://localhost:5000/product`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+            })
+    }
 
     const navigateToItemDetail = id => {
         navigate(`/item/${id}`);
@@ -32,6 +48,11 @@ const ManageInventories = () => {
                 })
         }
     }
+
+    const handleDeliverId = () => {
+
+    }
+
 
     const navigate = useNavigate();
     const navigateAddItem = event => {
@@ -58,6 +79,7 @@ const ManageInventories = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Company</th>
                         <th scope="col">Quantity</th>
+                        <th scope="col">Add Quantity</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -72,8 +94,17 @@ const ManageInventories = () => {
                                 <td>{item.company}</td>
                                 <td>{item.quantity}</td>
                                 <td>
+                                    <Form className='' onSubmit={handleSubmit(onSubmit)}>
+                                        <input type="number" className='d-inline form-control w-25 ' {...register("quantity")} />
+                                        <input className='d-inline btn btn-info w-25' type="submit" value="Add" />
+                                    </Form>
+                                </td>
+                                <td>
+                                    <button onClick={() => handleDeliverId(item._id)} className='btn btn-danger'>
+                                        <FontAwesomeIcon icon={faTruckPlane} />
+                                    </button>
                                     <button onClick={() => navigateToItemDetail(item._id)} className='btn btn-success m-1'>
-                                        <FontAwesomeIcon icon={faPen}></FontAwesomeIcon>
+                                        <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
                                     </button>
                                     <button onClick={() => handleDeleteId(item._id)} className='btn btn-danger'>
                                         <FontAwesomeIcon icon={faTrashCan} />
