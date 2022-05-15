@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useInventory from '../../../hooks/useProducts';
 import Item from '../Item/Item';
 
 const Inventory = () => {
-    const [inventory, setInventory] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:5000/product')
-            .then(res => res.json())
-            .then(data => setInventory(data));
-    }, [])
+    const [inventory] = useInventory();
     return (
         <div>
             <div className="row">
-                <h1 className='text-primary text-center mt-5'> Our Products</h1>
+                <h1 className='text-primary text-center mt-5'>Inventory</h1>
                 <div className="services-container">
                     {
                         inventory.map(item => <Item

@@ -5,7 +5,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faTruckPlane } from '@fortawesome/free-solid-svg-icons'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
 import { useForm } from 'react-hook-form';
 
@@ -31,8 +30,6 @@ const ManageInventories = () => {
     const navigateToItemDetail = id => {
         navigate(`/item/${id}`);
     }
-
-
 
     const handleDeleteId = id => {
         const proceed = window.confirm('Are You Sure Delete Item?');
@@ -66,8 +63,9 @@ const ManageInventories = () => {
                 <p className='text-muted mt-2 mb-5' >The product list effectively dictates product presentation and provides space
                     <br />
                     to list your products and offering in the most appealing way.</p>
+
                 <button onClick={navigateAddItem} className='btn btn-light'>
-                    <Nav.Link as={Link} to="/addItem">Add Item</Nav.Link>
+                    <Nav.Link as={Link} to="/addItem">Add New Item</Nav.Link>
                 </button>
             </div>
 

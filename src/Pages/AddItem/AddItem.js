@@ -1,9 +1,14 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
+import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import './AddItem.css';
 
 const AddItem = () => {
     const { register, handleSubmit } = useForm();
+    const [user] = useAuthState(auth);
+
     const onSubmit = data => {
         const url = `http://localhost:5000/product`;
         fetch(url, {
@@ -26,6 +31,7 @@ const AddItem = () => {
                 <input placeholder='Product Name' className='form-control w-50 mb-2' {...register("component")} />
                 <input placeholder='Supplier Name' className='form-control w-50 mb-2' {...register("name")} />
                 <input placeholder='Company Name' className='form-control w-50 mb-2' {...register("company")} />
+                <input value={user?.email} placeholder='Email' className='form-control w-50 mb-2' {...register("email")} />
                 <input placeholder='Price' className='form-control w-50 mb-2' type="number" {...register("price")} />
                 <input placeholder='Quantity' className='form-control w-50 mb-2' type="number" {...register("quantity")} />
                 <input placeholder='Image URL' className='form-control w-50 mb-2' type="text" {...register("img")} />
