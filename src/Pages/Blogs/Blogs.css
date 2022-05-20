@@ -1,0 +1,6 @@
+.blog-bg{
+    background-image: url(../../../src/images/blog.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

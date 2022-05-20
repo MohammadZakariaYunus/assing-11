@@ -7,8 +7,9 @@ const Inventory = () => {
     return (
         <div>
             <div className="row">
-                <h1 className='text-primary text-center mt-5'>Inventory</h1>
-                <div className="services-container">
+                <h1 className='text-primary text-center mt-3'>Inventory</h1>
+                <p className='text-primary text-center'>{inventory.length} Products Available</p>
+                <div>
                     {
                         inventory.map(item => <Item
                             key={item._id}

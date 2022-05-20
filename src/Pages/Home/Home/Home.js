@@ -6,13 +6,13 @@ import Item from '../Item/Item';
 
 const Home = () => {
     const [inventory] = useInventory();
-    const spliceInventory = inventory.splice(0, 6);
+    const sliceInventory = inventory.slice(0, 6);
 
     return (
         <div>
             <Banner></Banner>
             {
-                spliceInventory.map(item => <Item
+                sliceInventory.map(item => <Item
                     key={item._id}
                     item={item}
                 >

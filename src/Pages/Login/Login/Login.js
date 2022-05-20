@@ -30,10 +30,6 @@ const Login = () => {
         return <Loading></Loading>
     }
 
-    if (user) {
-
-    }
-
     if (error) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
     }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form, Nav } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
@@ -6,26 +6,10 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import { faTruckPlane } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
-import { useForm } from 'react-hook-form';
+
 
 const ManageInventories = () => {
     const [inventory, setInventory] = useInventory();
-
-    const { register, handleSubmit } = useForm();
-    const onSubmit = data => {
-        const url = `http://localhost:5000/product`;
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(result => {
-                console.log(result);
-            })
-    }
 
     const navigateToItemDetail = id => {
         navigate(`/item/${id}`);
@@ -46,15 +30,49 @@ const ManageInventories = () => {
         }
     }
 
+    // const [deliver, setDeliver] = useState([]);
+
+    // // load data
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/')
+    //         .then(res => res.json())
+    //         .then(data => setDeliver(data));
+    // }, [])
+
     const handleDeliverId = () => {
 
-    }
 
+    }
 
     const navigate = useNavigate();
     const navigateAddItem = event => {
         navigate('/addItem');
     }
+
+
+    // const handleUpdate = event => {
+    //     event.preventDefault();
+    //     const quantity = event.target.quantity.value;
+    //     const updatedQuantity = { quantity };
+
+    //     // send data to the server
+    //     const url = `http://localhost:5000/product/${id}`;
+    //     fetch(url, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(updatedQuantity)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             console.log('success', data);
+    //             alert('Updated Quantity successfully!!!');
+    //             event.target.reset();
+    //         })
+    // }
+
+
 
     return (
         <div className='container'>
@@ -77,7 +95,6 @@ const ManageInventories = () => {
                         <th scope="col">Price</th>
                         <th scope="col">Company</th>
                         <th scope="col">Quantity</th>
-                        <th scope="col">Add Quantity</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
@@ -91,12 +108,6 @@ const ManageInventories = () => {
                                 <td>{item.price} $</td>
                                 <td>{item.company}</td>
                                 <td>{item.quantity}</td>
-                                <td>
-                                    <Form className='' onSubmit={handleSubmit(onSubmit)}>
-                                        <input type="number" className='d-inline form-control w-25 ' {...register("quantity")} />
-                                        <input className='d-inline btn btn-info w-25' type="submit" value="Add" />
-                                    </Form>
-                                </td>
                                 <td>
                                     <button onClick={() => handleDeliverId(item._id)} className='btn btn-danger'>
                                         <FontAwesomeIcon icon={faTruckPlane} />
