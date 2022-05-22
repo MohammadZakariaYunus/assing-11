@@ -5,6 +5,7 @@ import useItemDetail from '../../hooks/useItemDetail';
 const ItemDetail = () => {
     const { itemId } = useParams();
     const [item] = useItemDetail(itemId);
+    console.log(itemId)
 
     const handleUpdate = event => {
         event.preventDefault();
@@ -14,8 +15,8 @@ const ItemDetail = () => {
         const price = event.target.price.value;
         const about = event.target.about.value;
         const component = event.target.component.value;
-
-        const updatedProduct = { name, company, quantity, price, about, component };
+        const img = event.target.component.value;
+        const updatedProduct = { name, img, company, quantity, price, about, component };
 
         // send data to the server
         const url = `http://localhost:5000/product/${itemId}`;
@@ -34,6 +35,8 @@ const ItemDetail = () => {
             })
     }
 
+    console.log(item)
+
     return (
         <div>
             <div className="container">
@@ -41,7 +44,7 @@ const ItemDetail = () => {
                 <div className="card mt-3" >
                     <div className="row">
                         <div className="col-5">
-                            <img className="card-img" src="" alt="" />
+                            <img className="card-img" src={item.img} alt="" />
                         </div>
                         <div className="col-7">
                             <div className="card-body">
@@ -65,6 +68,7 @@ const ItemDetail = () => {
                     <input className='w-50 form-control' type="text" name="price" placeholder='price' required /><br />
                     <input className='w-50 form-control' type="text" name="company" placeholder='Company' required /><br />
                     <input className='w-50 form-control' type="text" name="quantity" placeholder='Quantity' required /><br />
+                    <input placeholder='Image URL' className='form-control w-50 mb-2' type="text" name="img" /><br />
                     <textarea className='w-50 form-control' type="text" name="about" placeholder='Description' required /><br />
                     <button className='btn btn-info'>Update</button>
                 </form>

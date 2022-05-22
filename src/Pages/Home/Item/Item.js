@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import './Item.css'
 
 const Item = ({ item }) => {
-    const { _id, name, img, company, quantity, price, about, component } = item;
+    const { _id, name, img, company, quantity, price, component } = item;
     const navigate = useNavigate();
+    console.log(img)
 
     const navigateToItemDetail = id => {
         navigate(`/item/${id}`);
@@ -16,7 +17,7 @@ const Item = ({ item }) => {
                 <div className="card mt-3" >
                     <div className="row no-gutters">
                         <div className="col-5">
-                            <img className="card-img" src="" alt="" />
+                            <img className="card-img" src={img} alt="" />
                         </div>
                         <div className="col-7">
                             <div className="card-body">

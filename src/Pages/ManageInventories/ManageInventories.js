@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form, Nav } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons'
-import { faTruckPlane } from '@fortawesome/free-solid-svg-icons'
 import useInventory from '../../hooks/useProducts';
-
-
 const ManageInventories = () => {
     const [inventory, setInventory] = useInventory();
+
+
 
     const navigateToItemDetail = id => {
         navigate(`/item/${id}`);
@@ -30,47 +29,10 @@ const ManageInventories = () => {
         }
     }
 
-    // const [deliver, setDeliver] = useState([]);
-
-    // // load data
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/')
-    //         .then(res => res.json())
-    //         .then(data => setDeliver(data));
-    // }, [])
-
-    const handleDeliverId = () => {
-
-
-    }
-
     const navigate = useNavigate();
     const navigateAddItem = event => {
         navigate('/addItem');
     }
-
-
-    // const handleUpdate = event => {
-    //     event.preventDefault();
-    //     const quantity = event.target.quantity.value;
-    //     const updatedQuantity = { quantity };
-
-    //     // send data to the server
-    //     const url = `http://localhost:5000/product/${id}`;
-    //     fetch(url, {
-    //         method: 'PUT',
-    //         headers: {
-    //             'content-type': 'application/json'
-    //         },
-    //         body: JSON.stringify(updatedQuantity)
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             console.log('success', data);
-    //             alert('Updated Quantity successfully!!!');
-    //             event.target.reset();
-    //         })
-    // }
 
 
 
@@ -109,9 +71,6 @@ const ManageInventories = () => {
                                 <td>{item.company}</td>
                                 <td>{item.quantity}</td>
                                 <td>
-                                    <button onClick={() => handleDeliverId(item._id)} className='btn btn-danger'>
-                                        <FontAwesomeIcon icon={faTruckPlane} />
-                                    </button>
                                     <button onClick={() => navigateToItemDetail(item._id)} className='btn btn-success m-1'>
                                         <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
                                     </button>
