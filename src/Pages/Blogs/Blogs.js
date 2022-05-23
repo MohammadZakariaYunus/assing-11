@@ -1,6 +1,5 @@
 import React from 'react';
 import './Blogs.css';
-// import blog from '../../../src/images/blog-bg.jpg';
 
 
 const Blogs = () => {

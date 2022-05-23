@@ -19,7 +19,7 @@ const ItemDetail = () => {
         const updatedProduct = { name, img, company, quantity, price, about, component };
 
         // send data to the server
-        const url = `http://localhost:5000/product/${itemId}`;
+        const url = `https://secret-reef-34877.herokuapp.com/product/${itemId}`;
         fetch(url, {
             method: 'PUT',
             headers: {

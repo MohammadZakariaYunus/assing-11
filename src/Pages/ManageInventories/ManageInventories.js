@@ -17,7 +17,7 @@ const ManageInventories = () => {
     const handleDeleteId = id => {
         const proceed = window.confirm('Are You Sure Delete Item?');
         if (proceed) {
-            const url = `http://localhost:5000/product/${id}`;
+            const url = `https://secret-reef-34877.herokuapp.com/product/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

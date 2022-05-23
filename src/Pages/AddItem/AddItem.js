@@ -21,11 +21,11 @@ const AddItem = () => {
             img: event.target.img.value,
             about: event.target.about.value,
         }
-        axios.post('http://localhost:5000/product', addItem)
+        axios.post('https://secret-reef-34877.herokuapp.com/product', addItem)
             .then(response => {
                 console.log(response)
             });
-        axios.post('http://localhost:5000/myItems', addItem)
+        axios.post('https://secret-reef-34877.herokuapp.com/myItems', addItem)
             .then(response => {
                 console.log(response)
             });

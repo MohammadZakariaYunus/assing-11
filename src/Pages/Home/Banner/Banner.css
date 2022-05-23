@@ -1,0 +1,22 @@
+.banner-bg{
+    background: url(../../../images/banner.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    height: 500px;
+}
+.overlay {
+    background: rgba(23, 30, 34, 0.7);
+    overflow: hidden;
+    height: 100%;
+   }
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}

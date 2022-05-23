@@ -12,10 +12,9 @@ const Header = () => {
         signOut(auth);
     }
     return (
-        <Navbar bg="dark" sticky='top' variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="dark" sticky='top' variant="dark">
             <Container>
-                <Navbar.Brand href="#home">Wholesale Dealers
-                </Navbar.Brand>
+                <Navbar.Brand href="#home">Wholesale Dealers</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="m-auto">
@@ -44,7 +43,40 @@ const Header = () => {
                     </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar >
+        </Navbar>
+        // <Navbar collapseOnSelect bg="dark" sticky='top' variant="dark">
+        //     <Container>
+        //         <Navbar.Brand href="#home">Wholesale Dealers
+        //         </Navbar.Brand>
+        //         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        //         <Navbar.Collapse id="responsive-navbar-nav">
+        //             <Nav className="m-auto">
+        //                 <Nav.Link as={Link} to="/">Home</Nav.Link>
+        //                 <Nav.Link as={Link} to="inventory">Inventory</Nav.Link>
+        //                 <Nav.Link as={Link} to="blogs">Blogs</Nav.Link>
+        //                 {
+        //                     user && <>
+        //                         <Nav.Link as={Link} to="addItem">Add Item</Nav.Link>
+        //                         <Nav.Link as={Link} to="manage">Manage Items</Nav.Link>
+        //                         <Nav.Link as={Link} to="myItem">My Items</Nav.Link>
+
+        //                     </>
+        //                 }
+        //                 {
+        //                     user ?
+
+        //                         <Nav.Link onClick={handleSignOut}>
+        //                             Sign Out
+        //                         </Nav.Link>
+        //                         :
+        //                         <Nav.Link as={Link} to="login">
+        //                             Login
+        //                         </Nav.Link>
+        //                 }
+        //             </Nav>
+        //         </Navbar.Collapse>
+        //     </Container>
+        // </Navbar >
 
     );
 };

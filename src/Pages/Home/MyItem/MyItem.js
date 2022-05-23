@@ -10,7 +10,7 @@ const MyItem = () => {
     useEffect(() => {
         const getMyItems = async () => {
             const email = user?.email;
-            const url = `http://localhost:5000/myItems?email=${email}`
+            const url = `https://secret-reef-34877.herokuapp.com/myItems?email=${email}`
             const { data } = await axios.get(url, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('accessToken')}`
@@ -24,7 +24,6 @@ const MyItem = () => {
     return (
         <div>
             <h1>My Item</h1>
-            HeroKu$99
             <p>{myItem?.length}</p>
             {
                 myItem?.map(item => <Item
