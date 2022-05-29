@@ -20,12 +20,12 @@ const Item = ({ item }) => {
                         </div>
                         <div className="col-7">
                             <div className="card-body">
-                                <h4 className="card-title">{component}</h4>
+                                <h4 className="card-title mx-auto">{component}</h4>
                                 <p>Supplier: {name}</p>
                                 <p>Price: {price}</p>
                                 <p>Quantity: {quantity}</p>
                                 <p>{about}</p>
-                                <button onClick={() => navigateToItemDetail(_id)} className='btn btn-primary'>Show Product Details...</button>
+                                <button onClick={() => navigateToItemDetail(_id)} className='btn btn-outline btn-success'>Show Product Details...</button>
                             </div>
                         </div>
                     </div>

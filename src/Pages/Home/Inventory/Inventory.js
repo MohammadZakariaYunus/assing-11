@@ -7,7 +7,7 @@ const Inventory = () => {
     return (
         <div>
             <div className="row">
-                <h1 className='text-primary text-center mt-3'>Inventory</h1>
+                <h1 className='text-primary text-center mt-3 text-3xl'>Inventory</h1>
                 <p className='text-primary text-center'>{inventory.length} Products Available</p>
                 <div>
                     {

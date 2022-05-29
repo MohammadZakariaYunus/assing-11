@@ -35,8 +35,6 @@ const ItemDetail = () => {
             })
     }
 
-    console.log(item)
-
     return (
         <div>
             <div className="container">

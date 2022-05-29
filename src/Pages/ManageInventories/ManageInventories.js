@@ -74,7 +74,7 @@ const ManageInventories = () => {
                                     <button onClick={() => navigateToItemDetail(item._id)} className='btn btn-success m-1'>
                                         <FontAwesomeIcon icon={faEye}></FontAwesomeIcon>
                                     </button>
-                                    <button onClick={() => handleDeleteId(item._id)} className='btn btn-danger'>
+                                    <button onClick={() => handleDeleteId(item._id)} className='btn btn-error'>
                                         <FontAwesomeIcon icon={faTrashCan} />
                                     </button>
                                 </td>

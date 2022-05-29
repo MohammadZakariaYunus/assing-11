@@ -22,9 +22,9 @@ const MyItem = () => {
     }, [user]);
 
     return (
-        <div>
-            <h1>My Item</h1>
-            <p>{myItem?.length}</p>
+        <div className='min-h-screen'>
+            <h1 className='text-2xl'>My Item</h1>
+            <p>Item Available: {myItem?.length}</p>
             {
                 myItem?.map(item => <Item
                     key={item._id}
